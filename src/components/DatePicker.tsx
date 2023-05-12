@@ -3,22 +3,24 @@ import Wrapper from '../assets/wrappers/DatePicker';
 import Day from './DatePickerDay';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import { getDateRange, offsetDate, getRangeMonth } from '../utils/dateUtils';
+import { useAppContext } from '../context';
 
 const DatePicker = () => {
-  const [startDate, setStartDate] = React.useState<Date>(new Date());
-  const [dateRange, setDateRange] = React.useState<Date[]>([]);
+  const { dateRange, setDateRange } = useAppContext();
 
   const nextDay = () => {
-    setStartDate((current) => offsetDate(current));
+    const newRange = dateRange.map((date) => offsetDate(date));
+    setDateRange(newRange);
   };
 
   const prevDay = () => {
-    setStartDate((current) => offsetDate(current, -1));
+    const newRange = dateRange.map((date) => offsetDate(date, -1));
+    setDateRange(newRange);
   };
 
   React.useEffect(() => {
-    setDateRange(getDateRange(startDate));
-  }, [startDate]);
+    setDateRange(getDateRange(new Date()));
+  }, []);
 
   return (
     <Wrapper>

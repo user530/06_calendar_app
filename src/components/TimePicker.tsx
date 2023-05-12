@@ -24,7 +24,7 @@ const TimePicker = (props: ITimePicker) => {
       <div className="calendar">
         {Array(workingHours)
           .fill('')
-          .map((row, ind) => (
+          .map((_, ind) => (
             <div className="row" key={ind}>
               <div className="cell">
                 <span>1</span>
