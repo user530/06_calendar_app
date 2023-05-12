@@ -1,4 +1,6 @@
 import Wrapper from '../assets/wrappers/TimePicker';
+import { useAppContext } from '../context';
+import TimePickerRow from './TimePickerRow';
 import TimeStamp from './TimeStamp';
 
 interface ITimePicker {
@@ -8,10 +10,11 @@ interface ITimePicker {
 
 const TimePicker = (props: ITimePicker) => {
   const { startingHour, workingHours } = props;
+  const { interviews } = useAppContext();
 
-  const timeline: string[] = new Array(workingHours + 1)
+  const timeline: number[] = new Array(workingHours + 1)
     .fill(startingHour)
-    .map((val, ind) => `${val + ind}:00`);
+    .map((val, ind) => val + ind);
 
   return (
     <Wrapper>
@@ -22,33 +25,15 @@ const TimePicker = (props: ITimePicker) => {
       </div>
 
       <div className="calendar">
-        {Array(workingHours)
-          .fill('')
-          .map((_, ind) => (
-            <div className="row" key={ind}>
-              <div className="cell">
-                <span>1</span>
-              </div>
-              <div className="cell">
-                <span>1</span>
-              </div>
-              <div className="cell">
-                <span>1</span>
-              </div>
-              <div className="cell">
-                <span>1</span>
-              </div>
-              <div className="cell">
-                <span>1</span>
-              </div>
-              <div className="cell">
-                <span>1</span>
-              </div>
-              <div className="cell">
-                <span>1</span>
-              </div>
-            </div>
-          ))}
+        {timeline.slice(0, -1).map((workHour, ind) => (
+          <TimePickerRow
+            key={ind}
+            rowTimestamp={workHour}
+            rowInterviews={interviews.filter(
+              (interview) => interview.date.getHours() === workHour
+            )}
+          />
+        ))}
       </div>
     </Wrapper>
   );

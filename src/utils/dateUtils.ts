@@ -13,6 +13,10 @@ export function getDateRange(startDate: Date, range: number = 7): Date[] {
     result.push(date);
   }
 
+  // Set Time/Min/Sec for the edge cases
+  result[0].setHours(0, 0, 0, 0);
+  result[range - 1].setHours(23, 59, 59, 999);
+
   return result;
 }
 

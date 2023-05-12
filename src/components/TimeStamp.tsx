@@ -1,7 +1,7 @@
 import Wrapper from '../assets/wrappers/TimeStamp';
 
 interface ITimeStamp {
-  stamp: string;
+  stamp: number;
 }
 
 const TimeStamp = (props: ITimeStamp) => {
@@ -9,7 +9,7 @@ const TimeStamp = (props: ITimeStamp) => {
 
   return (
     <Wrapper>
-      <span>{stamp}</span>
+      <span>{`${stamp}:00`}</span>
     </Wrapper>
   );
 };

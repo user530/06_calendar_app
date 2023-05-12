@@ -33,6 +33,14 @@ const Wrapper = styled.div`
   .calendar .cell + .cell {
     border-left: 1px solid #cecece;
   }
+
+  .calendar .cell.filled {
+    background-color: rgb(235, 236, 255);
+  }
+
+  .calendar .cell.selected {
+    background-color: rgb(179, 183, 255);
+  }
 `;
 
 export default Wrapper;
