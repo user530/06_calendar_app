@@ -12,6 +12,12 @@ export const SET_SELECTED_DATE_ACTION = (date: Date) =>
     payload: date,
   } as const);
 
+export const SET_SELECTED_INTERVIEW = (interviewOrNull: Interview | null) =>
+  ({
+    type: 'SET_SELECTED_INTERVIEW',
+    payload: interviewOrNull,
+  } as const);
+
 export const SET_INTERVIEWS_ACTION = (interviews: Interview[]) =>
   ({
     type: 'SET_INTERVIEWS',

@@ -2,7 +2,7 @@ import React from 'react';
 import Wrapper from '../assets/wrappers/DatePicker';
 import Day from './DatePickerDay';
 import { GrNext, GrPrevious } from 'react-icons/gr';
-import { getDateRange, offsetDate, getRangeMonth } from '../utils/dateUtils';
+import { getDateRange, offsetDate, getRangeMonth } from '../utils';
 import { useAppContext } from '../context';
 
 const DatePicker = () => {

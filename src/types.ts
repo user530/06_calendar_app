@@ -1,6 +1,7 @@
 import * as reducer_actions from './features/actions';
 
 export interface Interview {
+  id: number;
   date: Date;
   position: string;
   interviewee: string;
@@ -8,7 +9,8 @@ export interface Interview {
 
 export interface ReducerState {
   dateRange: Date[];
-  selectedDate: Date;
+  selectedDate: Date | null;
+  selectedInterview: Interview | null;
   interviews: Interview[];
 }
 

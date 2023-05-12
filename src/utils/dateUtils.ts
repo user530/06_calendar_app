@@ -35,6 +35,10 @@ export function sameDate(date1: Date, date2: Date): boolean {
   );
 }
 
+export function sameDateHour(date1: Date, date2: Date): boolean {
+  return sameDate(date1, date2) && date1.getHours() === date2.getHours();
+}
+
 export function getRangeMonth(dateRange: Date[]): string {
   if (dateRange.length === 0) return '';
 

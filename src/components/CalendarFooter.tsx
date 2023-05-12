@@ -1,11 +1,18 @@
 import Wrapper from '../assets/wrappers/CalendarFooter';
+import DeleteInterviewBtn from './DeleteInterviewBtn';
+import { useAppContext } from '../context';
+import TodayInterviewBtn from './TodayInterviewBtn';
 
 const CalendarFooter = () => {
+  const { selectedInterview } = useAppContext();
+
   return (
     <Wrapper>
-      <button>Today</button>
+      <TodayInterviewBtn />
 
-      <button>Delete</button>
+      {selectedInterview ? (
+        <DeleteInterviewBtn interview={selectedInterview} />
+      ) : null}
     </Wrapper>
   );
 };
