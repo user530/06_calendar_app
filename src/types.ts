@@ -1,8 +1,15 @@
 import * as reducer_actions from './features/actions';
 
 export interface Interview {
-  id: number;
+  id: string;
   date: Date;
+  position: string;
+  interviewee: string;
+}
+
+export interface dbInterview {
+  _id: string;
+  date: string;
   position: string;
   interviewee: string;
 }

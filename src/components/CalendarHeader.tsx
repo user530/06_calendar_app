@@ -2,6 +2,7 @@ import Wrapper from '../assets/wrappers/CalendarHeader';
 import { GoPlus } from 'react-icons/go';
 import { validateEventInput } from '../utils';
 import { useAppContext } from '../context';
+import { addInterview } from '../utils/apiHandlers';
 
 const CalendarHeader = () => {
   const { interviews, setInterviews } = useAppContext();
@@ -18,10 +19,11 @@ const CalendarHeader = () => {
 
     const eventDate: Date = new Date(Date.parse(input));
 
-    setInterviews([
-      ...interviews,
-      { id: Date.now(), date: eventDate, interviewee: 'Name', position: 'Job' },
-    ]);
+    addInterview(eventDate)
+      .then((newInterview) => {
+        setInterviews([...interviews, newInterview]);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (

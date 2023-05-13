@@ -1,7 +1,6 @@
 import React from 'react';
 import Wrapper from '../assets/wrappers/CalendarBody';
-import DatePicker from './DatePicker';
-import TimePicker from './TimePicker';
+import { DatePicker, TimePicker } from '../components';
 
 const CalendarBody = () => {
   return (

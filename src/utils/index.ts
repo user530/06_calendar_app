@@ -8,7 +8,7 @@ import {
 
 import { fetchInterviews, addInterview, deleteInterview } from './apiHandlers';
 
-import { validateEventInput } from './other';
+import { validateEventInput, interviewFromDb } from './other';
 
 export {
   getDateRange,
@@ -20,4 +20,5 @@ export {
   addInterview,
   deleteInterview,
   validateEventInput,
+  interviewFromDb,
 };

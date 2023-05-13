@@ -8,13 +8,17 @@ interface IDeleteInterviewBtn {
 
 const DeleteInterviewBtn = (props: IDeleteInterviewBtn) => {
   const { id } = props.interview;
-  const { interviews, setInterviews } = useAppContext();
+  const { interviews, setInterviews, setSelectedInterview } = useAppContext();
 
   const deleteInterviewClick = async () => {
-    console.log('Delete Btn Click. Id = ', id);
-    // const delSuccess = await deleteInterview(id);
-    // if(delSuccess)
-    setInterviews(interviews.filter((interview) => interview.id !== id));
+    // 'Are you sure you want to delete selected interview?'
+
+    deleteInterview(id).then((success: boolean) => {
+      if (success) {
+        setInterviews(interviews.filter((interview) => interview.id !== id));
+        setSelectedInterview(null);
+      }
+    });
   };
 
   return <button onClick={deleteInterviewClick}>Delete</button>;

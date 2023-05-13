@@ -1,7 +1,7 @@
 import Wrapper from '../assets/wrappers/TimePickerRow';
 import { useAppContext } from '../context';
 import { Interview } from '../types';
-import TimePickerCell from './TimePickerCell';
+import { TimePickerCell } from '../components';
 
 interface ITimePickerRow {
   rowTimestamp: number;

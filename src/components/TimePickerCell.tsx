@@ -31,9 +31,7 @@ const TimePickerCell = (props: ITimePickerCell) => {
           : setSelectedInterview(null);
       }}
     >
-      <span>
-        {interview ? `${interview.position} - ${interview.interviewee}` : null}
-      </span>
+      <span>{interview ? '' : null}</span>
     </Wrapper>
   );
 };

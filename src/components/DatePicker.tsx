@@ -1,6 +1,6 @@
 import React from 'react';
 import Wrapper from '../assets/wrappers/DatePicker';
-import Day from './DatePickerDay';
+import { DatePickerDay } from '../components';
 import { GrNext, GrPrevious } from 'react-icons/gr';
 import { getDateRange, offsetDate, getRangeMonth } from '../utils';
 import { useAppContext } from '../context';
@@ -27,7 +27,7 @@ const DatePicker = () => {
       <header>
         <div className="date-picker-days">
           {dateRange.map((date: Date, ind: number) => (
-            <Day key={ind} date={date} />
+            <DatePickerDay key={ind} date={date} />
           ))}
         </div>
 

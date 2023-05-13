@@ -1,7 +1,7 @@
 import Wrapper from '../assets/wrappers/TimePicker';
 import { useAppContext } from '../context';
-import TimePickerRow from './TimePickerRow';
-import TimeStamp from './TimeStamp';
+import { TimePickerRow, TimeStamp } from '../components';
+import React from 'react';
 
 interface ITimePicker {
   startingHour: number;
@@ -11,6 +11,8 @@ interface ITimePicker {
 const TimePicker = (props: ITimePicker) => {
   const { startingHour, workingHours } = props;
   const { interviews } = useAppContext();
+
+  console.log(interviews);
 
   const timeline: number[] = new Array(workingHours + 1)
     .fill(startingHour)
