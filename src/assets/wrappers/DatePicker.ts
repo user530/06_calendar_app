@@ -1,22 +1,19 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.header`
-  padding-top: 20px;
-  padding-left: 100px;
-  margin-bottom: 10px;
-  background-color: lightgray;
+  height: 168px;
+  padding-top: 16px;
+  padding-left: 90px;
+  background-color: #f6f6f6;
+  border-top: 2px solid #ebebeb;
+  border-bottom: 2px solid #ebebeb;
+  font-size: 26px;
+  font-weight: 700;
 
-  .date-picker-days {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    justify-items: center;
-  }
-
-  .date-picker-controls {
-    display: flex;
-    justify-content: space-around;
-    padding-top: 25px;
-    padding-bottom: 25px;
+  @media (max-width: 767px) {
+    height: 100px;
+    padding-left: 40px;
+    padding-top: 10px;
   }
 `;
 

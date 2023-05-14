@@ -1,11 +1,20 @@
-import Wrapper from '../assets/wrappers/CalendarHeader';
+import Wrapper, {
+  HeaderHeading,
+  HeaderButton,
+} from '../assets/wrappers/CalendarHeader';
 import { GoPlus } from 'react-icons/go';
-import { validateEventInput } from '../utils';
+import { sameDateHour, validateEventInput } from '../utils';
 import { useAppContext } from '../context';
 import { addInterview } from '../utils/apiHandlers';
 
 const CalendarHeader = () => {
-  const { interviews, setInterviews } = useAppContext();
+  const {
+    interviews,
+    setInterviews,
+    selectedDate,
+    selectedInterview,
+    setSelectedInterview,
+  } = useAppContext();
 
   const addInterviewClick = () => {
     const input = prompt('Enter event time:\nYYYY-MM-DD HH:mm:ss');
@@ -21,6 +30,13 @@ const CalendarHeader = () => {
 
     addInterview(eventDate)
       .then((newInterview) => {
+        if (
+          !selectedInterview &&
+          selectedDate &&
+          sameDateHour(newInterview.date, selectedDate)
+        ) {
+          setSelectedInterview(newInterview);
+        }
         setInterviews([...interviews, newInterview]);
       })
       .catch((err) => console.log(err));
@@ -28,11 +44,11 @@ const CalendarHeader = () => {
 
   return (
     <Wrapper>
-      <h1>Interview Calendar</h1>
+      <HeaderHeading>Interview Calendar</HeaderHeading>
 
-      <button onClick={addInterviewClick}>
+      <HeaderButton onClick={addInterviewClick}>
         <GoPlus />
-      </button>
+      </HeaderButton>
     </Wrapper>
   );
 };

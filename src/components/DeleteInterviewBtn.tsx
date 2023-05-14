@@ -1,3 +1,4 @@
+import Wrapper from '../assets/wrappers/DeleteInterviewBtn';
 import { useAppContext } from '../context';
 import { Interview } from '../types';
 import { deleteInterview } from '../utils';
@@ -21,7 +22,7 @@ const DeleteInterviewBtn = (props: IDeleteInterviewBtn) => {
     });
   };
 
-  return <button onClick={deleteInterviewClick}>Delete</button>;
+  return <Wrapper onClick={deleteInterviewClick}>Delete</Wrapper>;
 };
 
 export default DeleteInterviewBtn;

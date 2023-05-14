@@ -1,4 +1,8 @@
-import Wrapper from '../assets/wrappers/TimePickerCell';
+import Wrapper, {
+  InnerCell,
+  filledTheme,
+  selectedTheme,
+} from '../assets/wrappers/TimePickerCell';
 import { useAppContext } from '../context';
 import { Interview } from '../types';
 import { sameDateHour } from '../utils';
@@ -19,11 +23,6 @@ const TimePickerCell = (props: ITimePickerCell) => {
 
   return (
     <Wrapper
-      className={`cell ${interview ? 'filled' : ''} ${
-        selectedDate && sameDateHour(selectedDate, cellDateTime)
-          ? 'selected'
-          : ''
-      }`}
       onClick={() => {
         setSelectedDate(cellDateTime);
         interview
@@ -31,7 +30,17 @@ const TimePickerCell = (props: ITimePickerCell) => {
           : setSelectedInterview(null);
       }}
     >
-      <span>{interview ? '' : null}</span>
+      <InnerCell
+        theme={
+          selectedDate && sameDateHour(selectedDate, cellDateTime)
+            ? selectedTheme
+            : interview
+            ? filledTheme
+            : null
+        }
+      >
+        {interview ? '' : null}
+      </InnerCell>
     </Wrapper>
   );
 };

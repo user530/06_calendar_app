@@ -1,4 +1,4 @@
-import Wrapper from '../assets/wrappers/TimeStamp';
+import Wrapper, { InnerStamp } from '../assets/wrappers/TimeStamp';
 
 interface ITimeStamp {
   stamp: number;
@@ -9,7 +9,7 @@ const TimeStamp = (props: ITimeStamp) => {
 
   return (
     <Wrapper>
-      <span>{`${stamp}:00`}</span>
+      <InnerStamp>{`${stamp < 10 ? `0${stamp}` : stamp}:00`}</InnerStamp>
     </Wrapper>
   );
 };

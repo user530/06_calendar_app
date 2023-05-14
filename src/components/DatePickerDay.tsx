@@ -1,4 +1,8 @@
-import Wrapper from '../assets/wrappers/DatePickerDay';
+import Wrapper, {
+  DayDate,
+  DayWeekday,
+  currentDayTheme,
+} from '../assets/wrappers/DatePickerDay';
 import { sameDate } from '../utils';
 
 interface IDatePickerDay {
@@ -9,13 +13,14 @@ const DatePickerDay = (props: IDatePickerDay) => {
   const { date } = props;
   const weekday = date.toLocaleString('en', { weekday: 'narrow' });
   const day = date.getDate();
+  const today = new Date();
 
   return (
     <Wrapper>
-      <span className="weekday">{weekday}</span>
-      <span className={`date ${sameDate(date, new Date()) ? 'today' : ''}`}>
+      <DayWeekday>{weekday}</DayWeekday>
+      <DayDate theme={sameDate(date, today) ? currentDayTheme : null}>
         {day}
-      </span>
+      </DayDate>
     </Wrapper>
   );
 };

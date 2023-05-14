@@ -1,4 +1,3 @@
-import React from 'react';
 import Wrapper from '../assets/wrappers/CalendarBody';
 import { DatePicker, TimePicker } from '../components';
 

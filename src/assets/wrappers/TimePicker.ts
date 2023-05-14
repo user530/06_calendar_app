@@ -2,44 +2,32 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   display: flex;
+  height: calc(100vh - 415px);
+  padding-top: 10px;
+  max-height: 900px;
+  overflow: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(200, 200, 200, 0.5) rgba(255, 0, 0, 0.5);
 
-  .timeline {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100px; // Same as margin-left for the DatePicker
+  &::-webkit-scrollbar {
+    display: block;
+
+    width: 5px;
+    height: 20px;
+    border-radius: 25px;
   }
 
-  .calendar {
-    flex-grow: 1;
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 0, 0, 0.5);
   }
 
-  .calendar .row {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    height: 60px;
+  &::-webkit-scrollbar-track {
+    background-color: rgba(200, 200, 200, 0.5);
   }
 
-  .calendar .row + .row {
-    border-top: 1px solid #cecece;
-  }
-
-  .calendar .cell {
-    height: 60px;
-    /* border: 1px solid black; */
-  }
-
-  .calendar .cell + .cell {
-    border-left: 1px solid #cecece;
-  }
-
-  .calendar .cell.filled {
-    background-color: rgb(235, 236, 255);
-  }
-
-  .calendar .cell.selected {
-    background-color: rgb(179, 183, 255);
+  @media (max-width: 767px) {
+    height: calc(100vh - 210px);
   }
 `;
 

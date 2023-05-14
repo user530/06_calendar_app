@@ -1,7 +1,5 @@
 import Wrapper from '../assets/wrappers/TimePicker';
-import { useAppContext } from '../context';
-import { TimePickerRow, TimeStamp } from '../components';
-import React from 'react';
+import { Timeline, CalendarGrid } from '../components';
 
 interface ITimePicker {
   startingHour: number;
@@ -10,9 +8,6 @@ interface ITimePicker {
 
 const TimePicker = (props: ITimePicker) => {
   const { startingHour, workingHours } = props;
-  const { interviews } = useAppContext();
-
-  console.log(interviews);
 
   const timeline: number[] = new Array(workingHours + 1)
     .fill(startingHour)
@@ -20,23 +15,9 @@ const TimePicker = (props: ITimePicker) => {
 
   return (
     <Wrapper>
-      <div className="timeline">
-        {timeline.map((timestamp, ind) => (
-          <TimeStamp key={ind} stamp={timestamp} />
-        ))}
-      </div>
+      <Timeline timeline={timeline} />
 
-      <div className="calendar">
-        {timeline.slice(0, -1).map((workHour, ind) => (
-          <TimePickerRow
-            key={ind}
-            rowTimestamp={workHour}
-            rowInterviews={interviews.filter(
-              (interview) => interview.date.getHours() === workHour
-            )}
-          />
-        ))}
-      </div>
+      <CalendarGrid timeline={timeline} />
     </Wrapper>
   );
 };
