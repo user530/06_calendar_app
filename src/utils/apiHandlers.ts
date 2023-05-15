@@ -1,7 +1,7 @@
 import { dbInterview, Interview } from '../types';
 import { interviewFromDb } from './other';
 
-const API_ENDPOINT = 'http://127.0.0.1:5000/api/v1';
+const API_ENDPOINT = process.env.REACT_APP_API_URL;
 
 export const fetchInterviews = async (
   dateRange: [Date, Date],
